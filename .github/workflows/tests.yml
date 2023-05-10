@@ -23,3 +23,6 @@ jobs:
       run: |
         python3 -m pip install pylint
         pylint --exit-zero MyClass.py
+
+    - name: Build Docker image
+      run: docker build -t test-python .
