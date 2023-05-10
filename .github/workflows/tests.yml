@@ -10,11 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.9
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
 
-      - name: Test
-        run: python3 -m unittest MyClass.py 
+    - name: Test
+      run: python3 -m unittest MyClass.py 
+
+    - name: Lint test
+      run: |
+        python3 -m pip install pylint
+        pylint --exit-zero MyClass.py
